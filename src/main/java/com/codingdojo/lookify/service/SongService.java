@@ -30,9 +30,9 @@ public class SongService {
 	public List<Song> topTenByRating() {
 		return songRepo.findTop10ByOrderByRatingDesc();
 	}
-	public List<Song> songsContainingArtist(String artist) {
-		return songRepo.findByArtistContaining(artist);
-	}
+//	public List<Song> songsContainingArtist(String artist) {
+//		return songRepo.findByArtistContaining(artist);
+//	}
 	public Song createSong(Song song) {
 		Artist artist = artistRepo.findOneByName(song.getArtistString());
 		if (artist == null) {
@@ -48,6 +48,10 @@ public class SongService {
 //	}
 	public void deleteSong(Long id) {
 		songRepo.deleteById(id);
+	}
+	
+	public List<Object[]> getAllSongsWithArtists(){
+		return songRepo.songAndArtistJoin();
 	}
 	
 }

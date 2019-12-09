@@ -1,5 +1,7 @@
 package com.codingdojo.lookify.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,8 @@ public class SongController {
 	
 	@RequestMapping("/dashboard")
 	public String songs(Model model) {
-		model.addAttribute("songs", songService.allSongs());
+		List<Object[]> songAndArtist = songService.getAllSongsWithArtists();
+		model.addAttribute("songs", songAndArtist);
 		return "/songs/songs.jsp";
 	}
 	@RequestMapping("/songs/{id}")
@@ -42,7 +45,7 @@ public class SongController {
 	}
 	@RequestMapping("/songs/search")
 	public String search(@RequestParam("artist") String artist, Model model) {
-		model.addAttribute("songs",	songService.songsContainingArtist(artist));
+		//model.addAttribute("songs",	songService.songsContainingArtist(artist));
 		model.addAttribute("artist", artist);
 		return "/songs/searched.jsp";
 	}

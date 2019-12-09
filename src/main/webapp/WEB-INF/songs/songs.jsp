@@ -33,10 +33,10 @@
 			<tbody>
 			<c:forEach items="${ songs }" var="song">
 				<tr>
-					<td><a href="/songs/${ song.id }">${ song.name }</a></td>
-					<td>${ song.artist }</td>
-					<td>${ song.rating }</td>
-					<td><a class="btn btn-danger" href="/delete/${ song.id }">Delete</a></td>
+					<td><a href="/songs/${ song[0].id }">${ song[0].name }</a></td>
+					<td>${ song[1].name }</td>
+					<td>${ song[0].rating }</td>
+					<td><a class="btn btn-danger" href="/delete/${ song[0].id }">Delete</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>
