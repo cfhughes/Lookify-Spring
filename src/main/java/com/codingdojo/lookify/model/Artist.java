@@ -3,9 +3,13 @@ package com.codingdojo.lookify.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,7 +23,12 @@ public class Artist {
 	
 	private String name;
 	
-	@OneToMany(mappedBy="artist")
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "songartist", 
+        joinColumns = @JoinColumn(name = "artist_id"), 
+        inverseJoinColumns = @JoinColumn(name = "song_id")
+    )
 	private List<Song> songs;
 	
 	public Artist() {

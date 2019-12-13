@@ -29,6 +29,11 @@
 		        <form:input class="form-control" path="artistString"/>
 		    </div>
 		    <div class="form-group">
+		        <form:label path="tagline">Tagline</form:label>
+		        <form:errors path="tagline"/>
+		        <form:input class="form-control" path="tagline"/>
+		    </div>
+		    <div class="form-group">
 		        <form:label path="rating">Rating</form:label>
 		        <form:errors path="rating"/>
 		        <form:input type="number" class="form-control" path="rating"/>
